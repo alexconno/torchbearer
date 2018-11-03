@@ -1,7 +1,39 @@
-﻿
+﻿@model Torchbearer.ViewModels.SkillsViewModel
+
 @{
     ViewData["Title"] = "Skills";
 }
 
 <h2>Skills</h2>
 
+<div>
+    <table class="table">
+        @foreach (var skill in Model.Skills)
+        {
+            <tr class="skill-description">
+                <th class="col-md-1">@skill.Name</th>
+                <td class="col-md-6">@skill.QuickDescription</td>
+                @if (skill.BeginnersLuckHealth)
+                {
+                    <td class="col-md-5">(H)</td>
+                }
+                else
+                {
+                    <td class="col-md-5">(W)</td>
+                }
+            </tr>
+            <tr class="skill-help" hidden>
+                <td class="col-md-1"></td>
+                <td class="col-md-6"><b>Suggested Help for @skill.Name:</b> Lore Master</td>
+                <td class="col-md-5"></td>
+            </tr>
+        }
+    </table>
+</div>
+
+<script language="javascript" type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+<script language="javascript" type="text/javascript">
+    $(".skill-description").click(function() {
+        $(this).next(".skill-help").toggle();
+    });
+</script>
