@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Torchbearer.Models;
 
 namespace Torchbearer.Migrations
 {
     [DbContext(typeof(UnionLarpContext))]
-    partial class UnionLarpContextModelSnapshot : ModelSnapshot
+    [Migration("20181103155408_SuggestedHelp")]
+    partial class SuggestedHelp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
