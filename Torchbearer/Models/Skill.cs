@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Torchbearer.Models
+﻿namespace Torchbearer.Models
 {
     public class Skill
     {

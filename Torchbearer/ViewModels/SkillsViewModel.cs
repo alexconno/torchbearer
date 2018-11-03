@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Torchbearer.Models;
 
 namespace Torchbearer.ViewModels
@@ -12,10 +13,10 @@ namespace Torchbearer.ViewModels
             var skillViewModels = new List<SkillViewModel>();
             foreach (var skill in skills)
             {
-                skillViewModels.Add(new SkillViewModel(skills, suggestedHelp){ Skill = skill });
+                skillViewModels.Add(new SkillViewModel(skills, suggestedHelp) { Skill = skill });
             }
 
-            Skills = skillViewModels;
+            Skills = skillViewModels.OrderBy(s => s.Skill.Name).ToList();
         }
     }
 }

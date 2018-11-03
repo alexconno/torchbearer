@@ -1,19 +1,20 @@
 ﻿@model Torchbearer.ViewModels.SkillsViewModel
-
 @{
     ViewData["Title"] = "Skills";
 }
-
 <h2>Skills</h2>
 <p>Page 136</p>
-
 <div>
     <table class="table">
         @foreach (var skillViewModel in Model.Skills)
         {
             <tr class="skill-description">
                 <th class="col-md-1">@skillViewModel.Skill.Name</th>
-                <td class="col-md-6">@skillViewModel.Skill.QuickDescription</td>
+                <td class="col-md-6">
+                    <p>@skillViewModel.Skill.QuickDescription</p>
+                    <p class="skill-help" hidden><b>Suggested Help for @skillViewModel.Skill.Name:</b> @skillViewModel.SuggestedHelpSkills.FirstOrDefault()@foreach (var helpSkill in skillViewModel.SuggestedHelpSkills.Skip(1))
+                    {@(", " + helpSkill)}</p>
+                </td>
                 @if (skillViewModel.Skill.BeginnersLuckHealth)
                 {
                     <td class="col-md-5">(H)</td>
@@ -23,18 +24,12 @@
                     <td class="col-md-5">(W)</td>
                 }
             </tr>
-            <tr class="skill-help" hidden>
-                <td class="col-md-1"></td>
-                <td class="col-md-6"><b>Suggested Help for @skillViewModel.Skill.Name:</b> @skillViewModel.SuggestedHelpSkills.FirstOrDefault() @foreach(var helpSkill in skillViewModel.SuggestedHelpSkills.Skip(1)){ @(", " + helpSkill) }</td>
-                <td class="col-md-5"></td>
-            </tr>
         }
     </table>
 </div>
-
 <script language="javascript" type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
 <script language="javascript" type="text/javascript">
-    $(".skill-description").click(function() {
-        $(this).next(".skill-help").toggle();
+    $(".skill-description").click(function () {
+        $(this).find(".skill-help").toggle();
     });
 </script>
