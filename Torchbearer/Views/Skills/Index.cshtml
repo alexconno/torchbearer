@@ -9,12 +9,12 @@
 
 <div>
     <table class="table">
-        @foreach (var skill in Model.Skills)
+        @foreach (var skillViewModel in Model.Skills)
         {
             <tr class="skill-description">
-                <th class="col-md-1">@skill.Name</th>
-                <td class="col-md-6">@skill.QuickDescription</td>
-                @if (skill.BeginnersLuckHealth)
+                <th class="col-md-1">@skillViewModel.Skill.Name</th>
+                <td class="col-md-6">@skillViewModel.Skill.QuickDescription</td>
+                @if (skillViewModel.Skill.BeginnersLuckHealth)
                 {
                     <td class="col-md-5">(H)</td>
                 }
@@ -25,7 +25,7 @@
             </tr>
             <tr class="skill-help" hidden>
                 <td class="col-md-1"></td>
-                <td class="col-md-6"><b>Suggested Help for @skill.Name:</b> Lore Master</td>
+                <td class="col-md-6"><b>Suggested Help for @skillViewModel.Skill.Name:</b> @skillViewModel.SuggestedHelpSkills.FirstOrDefault() @foreach(var helpSkill in skillViewModel.SuggestedHelpSkills.Skip(1)){ @(", " + helpSkill) }</td>
                 <td class="col-md-5"></td>
             </tr>
         }

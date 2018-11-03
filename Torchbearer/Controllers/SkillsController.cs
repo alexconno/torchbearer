@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Torchbearer.Models;
 using Torchbearer.ViewModels;
@@ -17,11 +18,9 @@ namespace Torchbearer.Controllers
         public IActionResult Index()
         {
             var skills = _unionLarpContext.Skills.ToList();
+            var suggestedHelpSkills = _unionLarpContext.SuggestedHelp.ToList();
 
-            var viewModel = new SkillsViewModel()
-            {
-                Skills = skills
-            };
+            var viewModel = new SkillsViewModel(skills, suggestedHelpSkills);
 
             return View(viewModel);
         }
