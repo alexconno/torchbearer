@@ -4,24 +4,24 @@
 }
 <h2>Skills</h2>
 <p>Page 136</p>
-<div>
+<div class="skill-content">
     <table class="table">
         @foreach (var skillViewModel in Model.Skills)
         {
             <tr class="skill-description">
-                <th class="col-md-1">@skillViewModel.Skill.Name</th>
-                <td class="col-md-6">
+                <th class="col-md-2">@skillViewModel.Skill.Name</th>
+                <td class="col-md-8">
                     <p>@skillViewModel.Skill.QuickDescription</p>
                     <p class="skill-help" hidden><b>Suggested Help for @skillViewModel.Skill.Name:</b> @skillViewModel.SuggestedHelpSkills.FirstOrDefault()@foreach (var helpSkill in skillViewModel.SuggestedHelpSkills.Skip(1))
                     {@(", " + helpSkill)}</p>
                 </td>
                 @if (skillViewModel.Skill.BeginnersLuckHealth)
                 {
-                    <td class="col-md-5">(H)</td>
+                    <td class="col-md-1">(H)</td>
                 }
                 else
                 {
-                    <td class="col-md-5">(W)</td>
+                    <td class="col-md-1">(W)</td>
                 }
             </tr>
         }
@@ -33,3 +33,13 @@
         $(this).find(".skill-help").toggle();
     });
 </script>
+<style>
+    .skill-content {
+        width: 800px;
+        margin: auto;
+    }
+
+    .skill-description:hover {
+        background: whitesmoke;
+    }
+</style>
