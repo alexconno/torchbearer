@@ -1,0 +1,9 @@
+﻿/* Skills page */
+.skill-content {
+    width: 800px;
+    margin: auto;
+}
+
+.skill-description:hover {
+    background: whitesmoke;
+}

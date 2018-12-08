@@ -29,7 +29,7 @@
 </div>
 <script language="javascript" type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
 <script language="javascript" type="text/javascript">
-    $(".skill-description").click(function () {
+    $(".skill-description").not(".skill-help").click(function () {
         $(this).find(".skill-help").toggle();
     });
 </script>
